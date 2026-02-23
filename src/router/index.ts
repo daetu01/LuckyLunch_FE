@@ -11,6 +11,7 @@ import RoomCreateView from '@/views/RoomCreateView.vue'
 import RoomJoinView from '@/views/RoomJoinView.vue'
 import RoomDashboardView from '@/views/RoomDashboardView.vue'
 import MeView from '@/views/MeView.vue'
+import LoginView from '@/views/LoginView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,9 @@ const router = createRouter({
 
     // 위치 기반 식당 탐색(좌 리스트/우 지도)
     { path: '/explore', name: 'explore', component: ExploreView },
+
+    // 로그인
+    { path: '/login', name: 'login', component: LoginView },
 
     // 방 만들기(옵션 설정)
     { path: '/rooms/new', name: 'room-create', component: RoomCreateView },

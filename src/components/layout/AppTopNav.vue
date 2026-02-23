@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 
 // TopNav는 “애플 홈페이지”처럼 심플한 상단 바를 담당합니다.
@@ -8,15 +9,13 @@ import { useAuthStore } from '@/stores/auth'
 // - 추후: 알림, 포인트 요약, 프로필 드롭다운 등을 확장 가능
 
 const auth = useAuthStore()
+const router = useRouter()
+const route = useRoute()
 
 const isAuthed = computed(() => auth.isAuthenticated)
 
 function onClickLogin() {
-  // TODO(백엔드/인증):
-  // - 여기서는 Google OAuth 시작을 “프론트 스텁”으로만 제공합니다.
-  // - 실제 구현은 백엔드가 만든 OAuth 시작 URL로 리다이렉트하거나,
-  //   프론트에서 구글 SDK로 토큰을 받아 백엔드에 전달하는 방식으로 교체하세요.
-  auth.startGoogleLogin()
+  router.push({ path: '/login', query: { redirect: route.fullPath } })
 }
 
 function onClickLogout() {
